@@ -1,3 +1,8 @@
+import random
+import string
+
+
+
 class User:
     """
     Class that generates new instances of users
@@ -64,5 +69,48 @@ class Credentials:
 
         """
 
-        Credentials.credentials_list.append(self)            
+        Credentials.credentials_list.append(self)     
 
+    def delete_credentials(self):
+            """
+            delete_credentials method deletes a saved credential from the credentials_list
+
+            """   
+
+            Credentials.credentials_list.remove(self)
+
+    @classmethod
+    def find_by_number(cls,user_name): 
+        """
+        Method that takes in a password and returns a password that matches the password.
+
+        """  
+        for credentials in cls.credentials_list:
+            if (credentials.c_username == user_name):
+                return credentials
+    
+
+    @classmethod
+    def credentials_exist(cls,user_name):
+        """
+        Method that checks if a credential exists from the user details list.
+        Args:
+        number: Phone number to search if the user details exists
+        Returns :
+        Boolean : True or false depending on the user details existance
+
+        """
+        for credentials in cls.credentials_list:
+            if credentials.c_username == user_name:
+                return True
+                  
+        return False
+
+    def generate_password(self):
+        """
+        generate a random password consisting of letters
+
+        """
+
+        password = string.ascii_lowercase + string.ascii_uppercase + "havertz"
+        return''.join(random.choice(password)for i in range(1,9))
