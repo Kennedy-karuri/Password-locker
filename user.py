@@ -26,17 +26,14 @@ class User:
         
         User.user_list.append(self)
 
-    def delete_user(self):
-
-        '''
-        delete_user method deletes a saved user from the user_list
-        '''
-
-        User.user_list.remove(self)
-
+  
     @classmethod   
-    def display_user(cls):
-        return cls.user_list
+    def my_user(cls,user_name,user_password):
+        current_user = ''
+        for user in User.user_list:
+            if user.user_name == user_name and user.user_password == user_password:
+                current_user = user.user_name
+        return current_user
 
 
 
