@@ -16,11 +16,11 @@ def create_credentials(account,user_name,user_password):
     New_credentials = Credentials(account,user_name,user_password)
     return New_credentials
 
-def save_credentials(credentials):
-    credentials.save_credeentials(credentials)
+def save_credentials(Credentials):
+    Credentials.save_credentials()
 
-def delete_credentials(credentials):
-    return credentials.delete_credentials()
+def delete_credentials(Credentials):
+    return Credentials.delete_credentials()
 
 
 def show_credentials():
@@ -38,7 +38,7 @@ def generate_password ():
 
 def main():
     while True:
-        print('Welcome to Password-locker. To create account us cr,lg to login and ex to exit')
+        print('Welcome to Password-locker. To create account use cr,lg to login and ex to exit')
         userinput = input().lower()
 
         if userinput == "cr":
@@ -49,7 +49,7 @@ def main():
             user_password = input().lower()
             if user_password == "e":
                 user_password = input("Tpye your password:")
-            elif user_password == "g" :
+            elif user_password == "gen" :
                 user_password = generate_password()
             else :
                 print("Try again")
@@ -68,7 +68,7 @@ def main():
                 print(f"Hey {user_name}")
                 while True:
                     print("use CR to create credentials, D to delete credential , DIS to display credentials, F to find credentials, X to exit")
-                    credentials_selection = input().lower
+                    credentials_selection = input().lower()
 
                     if credentials_selection == "cr":
                         print("create credentials")
@@ -86,7 +86,7 @@ def main():
                             print("Try Again")
 
                         save_credentials(create_credentials(account,user_name,user_password))
-                        print(f"Your credentials are {account} , {user_name} , {user_password} has been succesfully created.")
+                        print(f"Your credentials are {account},{user_name},{user_password} has been succesfully created.")
 
                     elif credentials_selection == "d":
                         print("enter account to delete")
